@@ -16,33 +16,47 @@ public class TheBadBatch {
     }
 
     public static boolean TatooineToNabooDivideAndConquer(int[] fuel) {
-        return TatooineToNabooDivideAndConquerHelper(fuel, fuel.length - 1);
+//        return TatooineToNabooDivideAndConquerHelper(fuel, fuel.length - 1);
+        return TatooineToNabooDivideAndConquerHelper(fuel, 0);
     }
 
+//    public static boolean TatooineToNabooDivideAndConquerHelper(int[] fuel, int
+//            destination) {
+//        if (destination == 0) {
+//            return true;
+//        }
+//        for (int i = destination - 1; i >= 0; i--) {
+//            if (fuel[i] >= destination - i) {
+//                boolean accepted = TatooineToNabooDivideAndConquerHelper(fuel, i);
+//                if (accepted) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+
     public static boolean TatooineToNabooDivideAndConquerHelper(int[] fuel, int
-            destination) {
-        if (destination == 0) {
+            start) {
+        if (start >= fuel.length - 1) {
             return true;
         }
-        for (int i = destination - 1; i >= 0; i--) {
-            if (fuel[i] >= destination - i) {
-                boolean accepted = TatooineToNabooDivideAndConquerHelper(fuel, i);
-                if (accepted) {
-                    return true;
-                }
+        if (fuel[start] == 0) {
+            return false;
+        }
+        for (int i = start + 1; i <= start + fuel[start]; i++) {
+            if (i >= fuel.length - 1) {
+                return true;
+            }
+            if (fuel[i] == 0) {
+                continue;
+            }
+            if (TatooineToNabooDivideAndConquerHelper(fuel, i)) {
+                return true;
             }
         }
         return false;
     }
-
-    // public static boolean TatooineToNabooDivideAndConquer(int[] fuel) {
-    // if (fuel[0] >= fuel.length - 1)
-    // return true;
-    // // divide based on indices of fuel = 0
-
-    // return false;
-    // }
-
 
     public static boolean TatooineToNabooGreedy(int[] fuel) {
         int currentFuel = fuel[0];
