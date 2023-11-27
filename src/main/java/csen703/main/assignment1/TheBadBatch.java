@@ -4,7 +4,8 @@ public class TheBadBatch {
 
     public static void main(String[] args) {
         int[] fuel1 = {2, 3, 1, 1, 4};
-        int[] fuel2 = {3, 2, 1, 0, 4};
+        int[] fuel2 = {1,0,2};
+
 
         System.out.println("fuel 1");
         System.out.println(TatooineToNabooDivideAndConquer(fuel1)); // Expected: true
@@ -59,7 +60,12 @@ public class TheBadBatch {
     }
 
     public static boolean TatooineToNabooGreedy(int[] fuel) {
+        if (fuel.length <= 1)
+            return true;
         int currentFuel = fuel[0];
+        if (currentFuel == 0) {
+            return false;
+        }
         for (int i = 0; i < fuel.length - 2; i++) {
             currentFuel--;
             if (currentFuel < fuel[i + 1]) {
