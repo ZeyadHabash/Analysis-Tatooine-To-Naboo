@@ -17,25 +17,8 @@ public class TheBadBatch {
     }
 
     public static boolean TatooineToNabooDivideAndConquer(int[] fuel) {
-//        return TatooineToNabooDivideAndConquerHelper(fuel, fuel.length - 1);
         return TatooineToNabooDivideAndConquerHelper(fuel, 0);
     }
-
-//    public static boolean TatooineToNabooDivideAndConquerHelper(int[] fuel, int
-//            destination) {
-//        if (destination == 0) {
-//            return true;
-//        }
-//        for (int i = destination - 1; i >= 0; i--) {
-//            if (fuel[i] >= destination - i) {
-//                boolean accepted = TatooineToNabooDivideAndConquerHelper(fuel, i);
-//                if (accepted) {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
 
     public static boolean TatooineToNabooDivideAndConquerHelper(int[] fuel, int
             start) {
@@ -62,10 +45,11 @@ public class TheBadBatch {
     public static boolean TatooineToNabooGreedy(int[] fuel) {
         if (fuel.length <= 1)
             return true;
-        int currentFuel = fuel[0];
-        if (currentFuel == 0) {
+        if (fuel[0] == 0)
             return false;
-        }
+
+        int currentFuel = fuel[0];
+
         for (int i = 0; i < fuel.length - 2; i++) {
             currentFuel--;
             if (currentFuel < fuel[i + 1]) {

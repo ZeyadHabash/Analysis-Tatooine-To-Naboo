@@ -1,14 +1,13 @@
 package csen703.tests.assignment1;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.concurrent.TimeUnit;
-
+import csen703.main.assignment1.TheBadBatch;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.Timeout.ThreadMode;
 
-import csen703.main.assignment1.TheBadBatch;
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class Assignment1Tests {
