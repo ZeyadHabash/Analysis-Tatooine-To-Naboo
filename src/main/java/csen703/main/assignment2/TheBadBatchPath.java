@@ -1,6 +1,7 @@
 package csen703.main.assignment2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TheBadBatchPath {
 
@@ -18,6 +19,35 @@ public class TheBadBatchPath {
         System.out.println(TatooineToNabooDP(fuel2)); // Expected: 0
         System.out.println(TatooineToNabooPath(fuel2)); // Expected: []
     }
+
+    public static Integer[][] TatooineToNabooJumps(int[] fuel) {
+        Integer[] numOfJumps = new Integer[fuel.length];
+        Integer[] source = new Integer[fuel.length];
+        Arrays.fill(numOfJumps, 0);
+        Arrays.fill(source, 0);
+
+        for (int i = fuel.length - 2; i >= 0; i--) {
+            if (fuel[i] == 0) {
+                continue;
+            }
+            for (int j = i + 1; j <= i + fuel[i]; j++) {
+                if (j >= fuel.length - 1) { // if we can reach the destination
+                    numOfJumps[i] = 1;
+                    source[i] = j;
+                    break;
+                }
+                if (numOfJumps[j] == 0) { // if we can't reach the destination from j
+                    continue;
+                }
+                if (numOfJumps[i] == 0 || numOfJumps[i] > numOfJumps[j] + 1) { // if we can reach the destination from j with less jumps
+                    numOfJumps[i] = numOfJumps[j] + 1;
+                    source[i] = j;
+                }
+            }
+        }
+        return new Integer[][]{numOfJumps, source};
+    }
+
 
     public static Integer TatooineToNabooDP(int[] fuel) {
         return TatooineToNabooJumps(fuel)[0][0];
@@ -38,4 +68,5 @@ public class TheBadBatchPath {
 
         return path;
     }
+
 }
