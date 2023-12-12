@@ -20,8 +20,7 @@ public class TheBadBatch {
         return TatooineToNabooDivideAndConquerHelper(fuel, 0);
     }
 
-    public static boolean TatooineToNabooDivideAndConquerHelper(int[] fuel, int
-            start) {
+    public static boolean TatooineToNabooDivideAndConquerHelper(int[] fuel, int start) {
         if (start >= fuel.length - 1) {
             return true;
         }
